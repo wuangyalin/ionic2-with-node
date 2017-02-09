@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Products List</ion-title>
+    <ion-buttons end>  
+      <button ion-button icon-only (click)="clearStorage()">
+        <ion-icon name="remove"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+  <div [virtualScroll]="categories">
+    <ion-list *virtualItem="let category" text-wrap>
+      <ion-card>
+      <ion-list-header class="category_name">
+        {{category.category}}
+      </ion-list-header>
+      
+      <ion-item *ngFor=" let product of category.detail " text-wrap>
+        <ion-avatar item-left>
+          <img src="{{product.image}}">
+        </ion-avatar>
+        <h2 >{{product.title}}</h2>
+        <p><span>Price: </span>{{product.price}}</p>
+      </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>
